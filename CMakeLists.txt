@@ -7,3 +7,6 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
 add_library(STI STI.c)
+
+add_subdirectory(source)
+add_subdirectory(tests)
