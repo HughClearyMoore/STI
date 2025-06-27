@@ -1,1 +1,2 @@
 add_subdirectory(DynArrayTest)
+add_subdirectory(HashMapTest)

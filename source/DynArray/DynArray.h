@@ -27,6 +27,7 @@ size_t DynArraySize(DynArray* array);
 STI_Finder DynArrayFind(DynArray* array, void* element, STI_BOOL(*cmp)(const void*, const void*));
 void DynArrayEraseIf(DynArray* array, void* element, STI_BOOL(*cmp)(const void*, const void*));
 void DynArrayForEach(DynArray* array, void(*func)(void*, void*), void* ctx);
+void DynArrayHeapSwap(DynArray* array, size_t index_a, size_t index_b);
 
 #define DynArraySwap(array, index_a, index_b, type) \
     do \

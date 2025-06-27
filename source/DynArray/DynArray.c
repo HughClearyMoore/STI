@@ -154,3 +154,20 @@ void DynArrayForEach(DynArray* array, void(*func)(void*, void*), void* ctx)
         func(DynArrayGet(array, i), ctx);
     }
 }
+
+void DynArrayHeapSwap(DynArray* array, size_t index_a, size_t index_b)
+{    
+    if(index_a == index_b) return;
+
+    void* a = DynArrayGet(array, index_a);
+    void* b = DynArrayGet(array, index_b);
+
+    void* tmp = malloc(array->element_size);
+    assert(tmp && "Get more ram LOL");
+
+    memcpy(tmp, a, array->element_size);
+    memcpy(a, b, array->element_size);
+    memcpy(b, tmp, array->element_size);
+
+    free(tmp);
+}
