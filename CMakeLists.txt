@@ -12,6 +12,8 @@ add_library(STI STI.c)
 
 add_subdirectory(source)
 
+target_include_directories(STI PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/source/include")
+
 if(STI_BUILD_TESTS)
     add_subdirectory(tests)
 endif()
