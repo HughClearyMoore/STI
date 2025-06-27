@@ -47,3 +47,12 @@ STI_StringView STI_StringViewCreate(const char* string)
     str.length = strlen(string);
     return str;
 }
+
+STI_StringView STI_StringViewCreate(const STI_String* string)
+{
+    STI_StringView str = {0};
+    str.data = string->data;
+    str.length = string->length;
+
+    return str;
+}
