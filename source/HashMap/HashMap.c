@@ -229,7 +229,7 @@ size_t HashMapFNV1AHash(const char* key)
     size_t FNV_prime = 16777619U;
 #endif
 
-    size_t hash = 0;
+    size_t hash = FNV_offset_bias;
     size_t length = strlen(key);
     for (size_t i = 0; i < length; ++i)
     {
@@ -248,4 +248,9 @@ size_t HashMapIntHash(const size_t* key)
 STI_BOOL HashMapStringCmp(const char* a, const char* b)
 {
     return strcmp(a, b) == 0;
+}
+
+STI_BOOL HashMapIntCmp(const size_t* a, const size_t* b)
+{
+    return *a == *b;
 }

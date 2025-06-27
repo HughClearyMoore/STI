@@ -48,6 +48,6 @@ const STI_BOOL HashMapContains(HashMap* map, const void* key);
 size_t HashMapFNV1AHash(const char* key);
 size_t HashMapIntHash(const size_t* key);
 STI_BOOL HashMapStringCmp(const char* a, const char* b);
-
+STI_BOOL HashMapIntCmp(const size_t* a, const size_t* b);
 
 #endif
