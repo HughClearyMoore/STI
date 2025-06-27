@@ -201,16 +201,18 @@ void HashMapErase(HashMap* map, const void* key)
         {
             if(map->deleter) map->deleter(entry->data);
             if(map->key_type == HASHMAP_KEY_STRING) free(entry->Key.s);
-
             
-            DynArrayHeapSwap(slot, i, size - 1);
+            if(i != size - 1)
+            {
+                HashMapEntry* last = DynArrayBack(slot);
+                memcpy(entry, last, slot->element_size);                
+            }
+            
             DynArrayPopBack(slot);
-            
-            
+                        
             return;
         }
     }
-
 }
 
 const STI_BOOL HashMapContains(HashMap* map, const void* key)

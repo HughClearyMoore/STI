@@ -40,7 +40,7 @@ STI_String STIStringClone(const STI_String* string)
     return str;
 }
 
-STI_StringView STI_StringViewCreate(const char* string)
+STI_StringView STI_StringViewCreateFromCString(const char* string)
 {
     STI_StringView str = {0};
     str.data = string;
@@ -48,7 +48,7 @@ STI_StringView STI_StringViewCreate(const char* string)
     return str;
 }
 
-STI_StringView STI_StringViewCreate(const STI_String* string)
+STI_StringView STI_StringViewCreateFromSTIString(const STI_String* string)
 {
     STI_StringView str = {0};
     str.data = string->data;

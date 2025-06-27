@@ -22,6 +22,7 @@ typedef struct STI_StringView
     const char* data;
 } STI_StringView;
 
-STI_StringView STI_StringViewCreate(const char* string);
+STI_StringView STI_StringViewCreateFromCString(const char* string);
+STI_StringView STI_StringViewCreateFromSTIString(const STI_String* string);
 
 #endif
