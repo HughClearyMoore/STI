@@ -174,7 +174,8 @@ void DynArrayHeapSwap(DynArray* array, size_t index_a, size_t index_b)
 
 void DynArrayBatchPush(DynArray* array, void* data, const size_t data_element_count, const size_t offset)
 {
-    assert(offset + data_element_count <= array->size && "Batch Copy out of bounds");
+    assert(offset + data_element_count <= array->capacity && "Batch Copy out of bounds");
     void* offset_ptr = DynArrayGet(array, offset);
     memcpy(offset_ptr, data, data_element_count * array->element_size);
+    array->size = offset + data_element_count;
 }
