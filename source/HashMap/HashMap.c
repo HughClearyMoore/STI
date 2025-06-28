@@ -29,7 +29,7 @@ static void HashMapSetKeyValue(HashMapEntry* entry, HashMapKeyType type, const v
     {
     case HASHMAP_KEY_INT:       entry->Key.i = *(int*)key; break;
     case HASHMAP_KEY_STRING:    entry->Key.s = strdup((const char*)key); break;
-    default: assert(0 && "Invalid key type"); return NULL;
+    default: assert(0 && "Invalid key type"); return;
     }
 }
 
@@ -108,7 +108,7 @@ void HashMapInsert(HashMap* map, const void* key, const void* data)
     for (size_t i = 0; i < size; ++i)
     {
         HashMapEntry* entry = DynArrayGet(slot, i);
-        void* key_ref = HashMapGetKeyRef(entry, map->key_type);
+        const void* key_ref = HashMapGetKeyRef(entry, map->key_type);
 
         if (comparator(key, key_ref))
         {
@@ -172,7 +172,7 @@ void* HashMapGet(HashMap* map, const void* key)
     for (size_t i = 0; i < size; ++i)
     {
         HashMapEntry* entry = DynArrayGet(slot, i);
-        void* key_ref = HashMapGetKeyRef(entry, map->key_type);
+        const void* key_ref = HashMapGetKeyRef(entry, map->key_type);
 
         if (comparator(key_ref, key))
         {
@@ -195,7 +195,7 @@ void HashMapErase(HashMap* map, const void* key)
     for(size_t i = 0; i < size; ++i)
     {
         HashMapEntry* entry = DynArrayGet(slot, i);
-        void* key_ref = HashMapGetKeyRef(entry, map->key_type);
+        const void* key_ref = HashMapGetKeyRef(entry, map->key_type);
 
         if(comparator(key_ref, key))
         {
@@ -217,7 +217,7 @@ void HashMapErase(HashMap* map, const void* key)
 
 const STI_BOOL HashMapContains(HashMap* map, const void* key)
 {
-    return HashMapGet(map, key);
+    return HashMapGet(map, key) != NULL;
 }
 
 // https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function

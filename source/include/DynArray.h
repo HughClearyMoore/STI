@@ -28,6 +28,7 @@ STI_Finder DynArrayFind(DynArray* array, void* element, STI_BOOL(*cmp)(const voi
 void DynArrayEraseIf(DynArray* array, void* element, STI_BOOL(*cmp)(const void*, const void*));
 void DynArrayForEach(DynArray* array, void(*func)(void*, void*), void* ctx);
 void DynArrayHeapSwap(DynArray* array, size_t index_a, size_t index_b);
+void DynArrayBatchPush(DynArray* array, void* data, const size_t data_element_count, const size_t offset);
 
 #define DynArraySwap(array, index_a, index_b, type) \
     do \
